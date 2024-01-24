@@ -1,0 +1,68 @@
+.register-form{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+
+}
+.registerRight, .registerLeft{
+    flex: 1;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.registerLogo{
+    font-size: 48px;
+    font-weight: 800;
+    color: rgb(59, 59, 242);
+    margin-bottom: 10px;
+}
+.registerDesc{
+    font-size: 22px;
+}
+.registerBox{
+    height: 400px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.registerInput{
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    padding-left: 10px;
+    margin: 5px 0;
+}
+.registerInput:focus{
+    outline: none;
+}
+.registerButton{
+   
+    border-radius: 10px;
+    border: none;
+    background-color:rgb(59, 59, 242);
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 10px 0;
+}
+.loginButton{
+    padding: 5px 20px;
+    align-self: center;
+    min-height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color:#42b72a;
+    color: white;
+    font-weight: 500;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 15px;
+}

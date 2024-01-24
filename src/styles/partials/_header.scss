@@ -1,0 +1,145 @@
+.headerContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    background: $background;
+    width:100%;
+    min-height: 55px;
+    position: sticky;
+    top: 0;
+    margin-top: 10px;
+    z-index: 999;
+}
+.headerLeft{
+    flex: 2;
+}
+.headerCenter{
+    display: flex;
+    align-items: center;
+    order: 3;
+    flex: 0 0 100%;
+    margin-top: 10px;
+    border-radius: 15px;
+    background-color: white;
+}
+.searchInput{
+    height: 30px;
+    width: 75%;
+    border: none;
+    padding: 0 0 0 5px;
+}
+i{
+    padding-left: 8px;
+}
+.searchInput:focus{
+    outline: none;
+}
+.headerCenter i{
+    padding: 0 0 0 10px;
+    color: $primary;
+    font-size: 20px !important;
+}
+.headerRight{
+    display: flex;
+    color: white;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 10px;
+}
+.profileIcon{
+    position: relative;
+    cursor: pointer;
+    width: 30px;
+}
+.headerLinks{
+    display: none;
+    position: relative;
+
+    &.active{
+        width: 100px;
+        height: 100px;
+        background-color: $background;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        top: 40px;
+        right: 0;
+        
+        .profile-divider{
+            display: none;
+        }
+    }
+
+    @include tablet{
+        display: flex;
+    }
+}
+.headerLink{
+   padding: 0 10px;
+   font-size: 14px;
+   cursor: pointer;
+   color: $primary;
+}
+.profile-divider{
+    color: $primary;
+}
+.headerImg{
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.logo{
+    font-size: 18px;
+    display: flex;
+    font-weight: bold;
+    margin: 0 10px;
+    color: $primary;
+    cursor: pointer;
+}
+.headerIcons{
+    display: flex;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.headerIconItem{
+    position: relative;
+    margin-right: 15px;
+}
+.headerIconBadge{
+    position: absolute;
+    font-size: 14px;
+    height: 15px;
+    width: 15px;
+    top: -5px;
+    right: -10px;
+    background-color: $secondary;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media screen and (min-width: 768px){
+    .headerContainer{
+        flex-wrap: nowrap;
+    }
+    .headerLeft{
+        order: 1;
+    }
+    .headerCenter{
+        order: 2;
+        flex: 4;
+        margin-top: 0;
+    }
+    .headerRight{
+        flex: 4;
+        order: 3;
+    }
+    .logo{
+        font-size: 24px;
+        margin-left: 20px;
+    }
+}
