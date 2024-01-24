@@ -1,63 +1,51 @@
 import { useState, useEffect } from "react";
 
+const url = import.meta.env.VITE_API_URL + "posts";
+const token = import.meta.env.VITE_API_TOKEN;
+const options = {
+    
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token
+    }
+} 
+async function fetchPosts(){
+    try{
+        const response = await fetch(url,options);
+        const result = await response.json();
+        const arrayList = result.map(
+            item => <><li key={item.id}><b>{item.title}</b>
+            <figure><img src={item.media ? item.media : '/assets/noCover.png'} className='postImg' alt='post image'/>
+            <figcaption className='caption'>{item.body}</figcaption>
+            </figure>
+            </li>
+            </>
+            )
+            return arrayList;    
+    }
+    catch(error){
+        console.log('Error: ', error);
+    }
+}
 function Feed() {
     const [data, setData] = useState([]);
-    const [error, setError] = useState(null);
-    const [loading,setLoading] = useState(true);
-    const url = import.meta.env.VITE_API_URL + "posts";
-    const token = import.meta.env.VITE_API_TOKEN;
     
     useEffect(() => {
-        const options = {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + token
-            }
-        } 
-        const fetchPosts = async () => fetch(url,options)
-        .then(response => {
-            if(response.ok){
-                return response.json();
-            }
-            throw response;    
-        })
-        .then(data => {
-            setData(data);
-            console.log(data);
-        })
-        .catch(error =>{
-            setError(error);
-            setData(null);
-        })
-        .finally(() =>{
-            setLoading(false)
-        })
-        fetchPosts();
-    }, [url, token]);
+       
+        fetchPosts()
+        .then(data => setData(data));
+    }, []);
 
-    
-    if(loading) return "Loading...";
-    if(error) return "Error!";
+
 
     return(
         <>
         <h2>What people are listening to:</h2>
-        {loading && <div>One moment...</div> }
-        {error && (
-            <div>{`There is a problem fetching the post - ${error}`}</div>
-        )}
+       
         <div className="post">
             <ul>
-                {data.map((post) =>{
-                    <>
-                    <li key={post.id}>{post.title}</li>
-                    <figure><img src={post.media ? post.media : '/assets/noCover.png'} className='postImg' alt='post image'/>
-                    <figcaption className='caption'>{post.body}</figcaption>
-                    </figure>
-                    </>
-                    } 
-                )}  
+                {data}  
             </ul>
         </div>
         </>
