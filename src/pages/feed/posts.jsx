@@ -31,13 +31,10 @@ async function fetchPosts(){
 function Feed() {
     const [data, setData] = useState([]);
     
-    useEffect(() => {
-       
+    useEffect(() => { 
         fetchPosts()
         .then(data => setData(data));
     }, []);
-
-
 
     return(
         <>
